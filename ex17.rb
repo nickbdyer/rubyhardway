@@ -1,23 +1,28 @@
-from_file, to_file = ARGV
 
-puts "Copying from #{from_file} to #{to_file}"
+# Converted to a single line copy file. 
 
-# we could do these two on one line, how?
+File.open(ARGV[1], 'w'){|file| file.write(File.read(ARGV[0]))}
 
-# in_file = open(from_file)
-# indata = in_file.read
+# from_file, to_file = ARGV
 
-indata = File.open(from_file, 'r') {|file| file.read};
+# puts "Copying from #{from_file} to #{to_file}"
 
-puts "The input file is #{indata.length} bytes long"
+# # we could do these two on one line, how?
 
-puts "Does the output file exist? #{File.exist?(to_file)}"
-puts "Ready, hit RETURN to continue, CTRL-C to abort."
-$stdin.gets
+# # in_file = open(from_file)
+# # indata = in_file.read
 
-out_file = open(to_file, 'w')
-out_file.write(indata)
+# indata = File.open(from_file, 'r') {|file| file.read};
 
-puts "Alright, all done."
+# puts "The input file is #{indata.length} bytes long"
 
-out_file.close
+# puts "Does the output file exist? #{File.exist?(to_file)}"
+# puts "Ready, hit RETURN to continue, CTRL-C to abort."
+# $stdin.gets
+
+# out_file = open(to_file, 'w')
+# out_file.write(indata)
+
+# puts "Alright, all done."
+
+# out_file.close
