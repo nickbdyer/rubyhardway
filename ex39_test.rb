@@ -47,7 +47,7 @@ puts '-' * 10
 state = Dict.get(states, 'Texas')
 
 if !state
-  puts "Sorry, no Texas."
+  puts "Sorry, no Texas!"
 end
 
 # default values using ||= with the nil result
