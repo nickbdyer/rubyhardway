@@ -46,7 +46,7 @@ def convert(snippet, phrase)
 	rand_words = WORDS.sort_by {rand}
 	class_names = craft_names(rand_words, snippet, /###/, caps=true)
 	other_names = craft_names(rand_words, snippet, /\*\*\*/)
-	param_names = craft_params(rand_words, sippet, /@@@/)
+	param_names = craft_params(rand_words, snippet, /@@@/)
 
 	results = []
 
@@ -73,7 +73,7 @@ loop do
 
 	for snippet in snippets
 		phrase = PHRASES[snippet]
-		question, answer = convert(snipped, phrase)
+		question, answer = convert(snippet, phrase)
 
 		if PHRASE_FIRST
 			question, answer = answer, question
