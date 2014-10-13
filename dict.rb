@@ -74,4 +74,9 @@ module Dict
       end
     end
   end
+
+  def Dict.dump(aDict)
+    # Prints out what's in the Dict.
+    puts aDict.inspect
+  end
 end
