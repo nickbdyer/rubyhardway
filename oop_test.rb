@@ -44,7 +44,7 @@ end
 
 def convert(snippet, phrase)
 	rand_words = WORDS.sort_by {rand}
-	class_names = craft_names(rand_words, snippet, /###/, caps=true)
+	class_names = craft_names(rand_words, snippet, /###/, caps=true)	
 	other_names = craft_names(rand_words, snippet, /\*\*\*/)
 	param_names = craft_params(rand_words, snippet, /@@@/)
 
