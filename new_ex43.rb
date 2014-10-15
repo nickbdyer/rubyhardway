@@ -15,6 +15,12 @@ class Engine
 
   def play()
       current_scene = @scene_map.opening_scene()
+      last_scene = @scene_map.next_scene('finished')
+
+      while current_scene != last_scene
+         nextroomname = current_scene.enter()
+         current_scene = @scene_map.next_scene(nextroomname)
+      end
 
       current_scene.enter()
   end
@@ -44,7 +50,7 @@ class CentralCorridor < Scene
     elsif response == "blow a kiss"
       puts "The person doesn't know how to react, confused, you quickly shoot him in the head."
       puts "You reach the door to the laser weapon room!"
-      return "weapons"
+      return 'weapons'
     end
   end
 end
@@ -54,25 +60,25 @@ class LaserWeaponArmory < Scene
 
   def enter()
     puts "You enter the Weapons room!"
-
+    'bridge'
   end
-  'bridge'
+  
 end
 
 class TheBridge < Scene
 
   def enter()
     puts "You enter the Bridge!"
+    'escapepod'
   end
-  'escapepod'
 end
 
 class EscapePod < Scene
 
   def enter()
     puts "You enter the escape pod!"
+    'finished'
   end
-  'finished'
 end
 
 class Finished < Scene
@@ -80,14 +86,13 @@ class Finished < Scene
   def enter()
     puts "You win!"
   end
- 
 end
 
 class Map
 
     @@scenes = {"death" => Death.new(), "bridge" => TheBridge.new(), 
       "escapepod" => EscapePod.new(), "weapons" => LaserWeaponArmory.new(), 
-      "centralcorridor" => CentralCorridor.new()}
+      "centralcorridor" => CentralCorridor.new(), 'finished' => Finished.new()}
 
   def initialize(start_scene)
     @start_scene = start_scene
@@ -108,6 +113,3 @@ end
 a_map = Map.new("centralcorridor")
 a_game = Engine.new(a_map)
 a_game.play()
-
-test = CentralCorridor.new()
-test.enter()
