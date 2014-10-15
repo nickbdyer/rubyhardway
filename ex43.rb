@@ -101,17 +101,19 @@ class LaserWeaponArmory < Scene
     puts "and you need the code to get the bomb out.  If you get the code"
     puts "wrong 10 times then the lock closes forever and you can't"
     puts "get the bomb.  The code is 3 digits."
-    code = "#{rand(1..9)}#{rand(1..9)}#{rand(1..9)}"
+    code = "123"
     print "[keypad]> "
     guess = $stdin.gets.chomp
-    guesses = 0
+    guesses = 1
 
-    while guess != code && guesses < 9
+    while guess != code && guesses < 10
       puts "BZZZZEDDD!"
       guesses += 1
       print "[keypad]> "
       guess = $stdin.gets.chomp
     end
+
+    puts "Out of loop"
 
     if guess == code
         puts "The container clicks open and the seal breaks, letting gas out."
